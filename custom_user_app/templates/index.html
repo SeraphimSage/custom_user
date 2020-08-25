@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h1> Hello, {{ request.user.display_name }} </h1>
+        <h2> Or do you prefer to go by your username {{ request.user.username }}</h2>
+        <h3> Are you really {{ request.user.age }}?
+        <h3> Here is that print out you asked for, {{ AUTH_USER_MODEL }}
+        <h3><a href="logout/"><button>See you next time!</button></a></h3>
+    {% else %}
+        <h1>Welcome, please sign up and sign in! </h1>
+        <h2>
+            <a href="login/"><button>Welcome back!</button></a>
+            <a href="signup/"><button>New here?</button></a>
+    {% endif %}
+{% endblock  %}
+
+{% comment %} Username of the person logged in. {% endcomment %}
+{% comment %} Display name of the person logged in. {% endcomment %}
+{% comment %} Display the output of value 'settings.AUTH_USER_MODEL' {% endcomment %}
